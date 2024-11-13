@@ -5,7 +5,7 @@ import pyperclip  # For copying to clipboard
 
 # Set page configuration for a better-looking app
 st.set_page_config(
-    page_title="LinkedIn Post Generator",
+    page_title="IntelliAI Post Generator",
     page_icon="😎",
     layout="centered",
     initial_sidebar_state="auto",
@@ -106,13 +106,13 @@ st.markdown("""
 # Main content with title centered and subtitle aligned right
 st.markdown("""
     <div class="title-container">
-        <div class="title-text">LinkedIn Post Generator</div>
+        <div class="title-text">IntelliAI Post Generator</div>
         <div class="subtitle-text">By Jillani SoftTech 😎</div>
     </div>
 """, unsafe_allow_html=True)
 
-# Add descriptive subheaders
-st.subheader("Create Engaging LinkedIn Posts with Ease")
+# Add descriptive subheader
+st.subheader("Enhance Your Social Media Presence with IntelliAI")
 
 # Initialize dropdown options
 length_options = ["Short", "Medium", "Long"]
@@ -129,7 +129,7 @@ with col1:
 with col2:
     fs = FewShotPosts()
     tags = fs.get_tags()
-    selected_tag = st.selectbox("Topic", options=tags, help="Choose the topic for your LinkedIn post.")
+    selected_tag = st.selectbox("Topic", options=tags, help="Choose the topic for your Social Media post.")
 with col3:
     selected_length = st.selectbox("Length", options=length_options, help="Specify the desired length of the post.")
 with col4:
@@ -151,11 +151,11 @@ def get_hashtag_suggestions(tag):
         "Leadership": ["#Leadership", "#TeamBuilding", "#Inspiration"],
         "Productivity": ["#TimeManagement", "#Focus", "#Productivity"]
     }
-    return suggestions.get(tag, ["#LinkedIn", "#Networking"])
+    return suggestions.get(tag, ["#SocialMedia", "#Networking"])
 
 hashtag_suggestions = get_hashtag_suggestions(selected_tag)
 
-# Button to generate the LinkedIn post
+# Button to generate the Social Media post
 if st.button("Generate Post"):
     post = generate_post(selected_length, selected_language, selected_tag)
     post = f"{selected_emoji} {post} {' '.join(hashtag_suggestions)}"
@@ -195,7 +195,7 @@ if st.button("Generate Post"):
     st.download_button(
         label="Save Post",
         data=edited_post,
-        file_name="LinkedIn_Post.txt",
+        file_name="Social_Media_Post.txt",
         mime="text/plain"
     )
 
@@ -212,7 +212,7 @@ if st.button("Clear History"):
 # Additional instructions and features
 st.markdown("""
     <div style='margin-top: 2em; text-align: center;'>
-        <p style='color: #8d99ae;'>Tips for creating impactful LinkedIn posts:</p>
+        <p style='color: #8d99ae;'>Tips for creating impactful Social Media posts:</p>
         <ul style='color: #8d99ae; text-align: left; max-width: 400px; margin: auto;'>
             <li>Use emojis sparingly to add personality but maintain professionalism.</li>
             <li>Focus on storytelling to make the content relatable.</li>
